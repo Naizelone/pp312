@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<H2> All users:</H2>
+<br><br>
+<table>
+    <tr>
+        <th> Name </th>
+        <th> Surname </th>
+        <th> Age </th>
+        <th> Salary </th>
+        <th>Operation</th>
+    </tr>
+        <tr th:each="user : ${userList}">
+            <td th:text="${user.name}"> </td>
+            <td th:text="${user.surname}"></td>
+            <td th:text="${user.age}"></td>
+            <td th:text="${user.salary}"></td>
+            <td><form th:method="PATCH" th:action="@{/updateInfo?userId={id}(id=${user.getId()})}">
+                <input type="submit" value="Update">
+            </form>
+                <form th:method="DELETE" th:action="@{/deleteInfo?userId={id}(id=${user.getId()})}">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+    </thEach>
+</table>
+<br>
+<input type="button" value="Add user"
+       onclick="window.location.href = 'addUser'">
+
+
+
+</body>
+</html>
